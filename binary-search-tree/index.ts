@@ -124,6 +124,24 @@ export class BinarySearchTree<T> {
     return floorNode ? floorNode.value : null
   }
 
+  ceil(value: T): T | null {
+    let root = this.root
+    let ceilNode = null
+
+    while (root != null) {
+      if (value === root.value) {
+        return root.value
+      } else if (value < root.value) {
+        ceilNode = root
+        root = root.left
+      } else {
+        root = root.right
+      }
+    }
+
+    return ceilNode ? ceilNode.value : null
+  }
+
   inorder(iteratee: (node: Node<T>) => void) {
     this._inorder(this.root, iteratee)
   }
@@ -156,3 +174,6 @@ console.log(bst.search(25)) // false
 // bst.inorder((node) => console.log(node.value))
 console.log(bst.floor(15))
 console.log(bst.floor(17))
+console.log(bst.floor(2))
+console.log(bst.ceil(17))
+console.log(bst.ceil(4))
