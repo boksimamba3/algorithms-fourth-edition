@@ -1,33 +1,64 @@
 import * as readline from 'readline'
 
-export class ArrayStack<T = any> {
+export class ReverseStackIterator<T> implements Iterator<T> {
+  stack: ArrayStack<T>
+  n: number
+  constructor(stack: ArrayStack<T>) {
+    this.stack = stack
+    this.n = stack.size() - 1
+  }
+
+  next() {
+    return {
+      done: this.n < 0,
+      value: this.stack.arr[this.n--],
+    }
+  }
+}
+
+export class ArrayStack<T = any> implements Iterable<T> {
   arr: T[]
-  capacity: number
   n: number
 
   constructor(capacity: number) {
-    this.capacity = capacity
     this.arr = Array.from({ length: capacity })
-    this.n = -1
+    this.n = 0
   }
 
   push(item: T) {
-    if (this.n >= this.capacity - 1) {
-      throw new Error('Stack is full')
+    if (this.n === this.arr.length) {
+      this.resize(this.arr.length * 2)
     }
-    this.arr[++this.n] = item
-    console.log(this.n)
+    this.arr[this.n++] = item
   }
 
   pop(): T {
-    if (this.isEmpty()) {
-      throw new Error('Stack is empty')
+    const item = this.arr[--this.n]
+    this.arr[this.n] = undefined
+    if (this.n > 0 && this.n === Math.floor(this.arr.length / 4)) {
+      this.resize(this.arr.length / 2)
     }
-    return this.arr[this.n--]
+    return item
+  }
+
+  resize(capacity: number) {
+    const temp = Array.from<T>({ length: capacity })
+    for (let i = 0; i < capacity; i++) {
+      temp[i] = this.arr[i]
+    }
+    this.arr = temp
   }
 
   isEmpty(): boolean {
-    return this.n === -1
+    return this.n === 0
+  }
+
+  size(): number {
+    return this.n
+  }
+
+  [Symbol.iterator]() {
+    return new ReverseStackIterator(this)
   }
 }
 
@@ -44,6 +75,7 @@ rl.on('line', (input) => {
   } else {
     stack.push(parseInt(input))
   }
+  console.log(stack.arr)
 })
 
 rl.on('SIGINT', () => {
