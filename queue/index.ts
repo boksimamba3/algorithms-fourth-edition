@@ -9,7 +9,31 @@ export class Node<T> {
   }
 }
 
-export class Queue<T> {
+export class QueueIterator<T> implements Iterator<T> {
+  private current: Node<T>
+
+  constructor(queue: Queue<T>) {
+    this.current = queue.getHead()
+  }
+
+  next() {
+    const node = this.current
+    if (!node) {
+      return {
+        done: true,
+        value: null,
+      }
+    }
+    this.current = this.current.next
+
+    return {
+      done: node === null,
+      value: node && node.value,
+    }
+  }
+}
+
+export class Queue<T = any> implements Iterable<T> {
   private head: Node<T> | null
   private tail: Node<T> | null
   private length: number
@@ -28,7 +52,11 @@ export class Queue<T> {
     return this.length
   }
 
-  enqueue(value: T) {
+  getHead(): Node<T> {
+    return this.head
+  }
+
+  enqueue(value: T): this {
     let oldTail = this.tail
     this.tail = new Node(value)
     this.tail.next = null
@@ -38,6 +66,8 @@ export class Queue<T> {
       oldTail.next = this.tail
     }
     this.length++
+
+    return this
   }
 
   dequeue(): T {
@@ -52,6 +82,10 @@ export class Queue<T> {
     }
 
     return value
+  }
+
+  [Symbol.iterator]() {
+    return new QueueIterator(this)
   }
 }
 

@@ -1,8 +1,9 @@
 import * as readline from 'readline'
 
 export class ReverseStackIterator<T> implements Iterator<T> {
-  stack: ArrayStack<T>
-  n: number
+  private stack: ArrayStack<T>
+  private n: number
+
   constructor(stack: ArrayStack<T>) {
     this.stack = stack
     this.n = stack.size() - 1
