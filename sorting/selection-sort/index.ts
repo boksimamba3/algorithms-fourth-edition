@@ -35,3 +35,4 @@ export class SelectionSort {
 const array = [10, 15, 1, 2, 9, 4, 5]
 SelectionSort.sort(array)
 console.log(array)
+console.log('Sorted: ', SelectionSort.isSorted(array))
