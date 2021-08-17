@@ -1,13 +1,11 @@
-export class SelectionSort {
+export class InsertionSort {
   static sort<T>(array: T[]) {
-    for (let i = 0; i < array.length; i++) {
-      let min = i
-      for (let j = i + 1; j < array.length; j++) {
-        if (SelectionSort.less(array[j], array[min])) {
-          min = j
-        }
+    for (let i = 1; i < array.length; i++) {
+      let j = i
+      while (j >= 0 && InsertionSort.less(array[j], array[j - 1])) {
+        InsertionSort.exchange(array, j, j - 1)
+        j--
       }
-      SelectionSort.exchange(array, i, min)
     }
   }
 
@@ -33,6 +31,6 @@ export class SelectionSort {
 }
 
 const array = [10, 15, 1, 2, 9, 4, 5]
-SelectionSort.sort(array)
+InsertionSort.sort(array)
 console.log(array)
-console.log('Sorted:', SelectionSort.isSorted(array))
+console.log('Sorted:', InsertionSort.isSorted(array))
