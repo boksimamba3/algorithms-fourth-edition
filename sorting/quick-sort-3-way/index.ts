@@ -1,19 +1,23 @@
-import { InsertionSort } from '../insertion-sort'
-
-const CUTOFF = 5
-
 export class QuickSort {
-  static sort<T>(array: T[], lo: number, hi: number) {
-    if (hi <= lo + CUTOFF) {
-      InsertionSort.sort(array) // 👈 improves quick sort for tiny subarray's
+  static sort(array: number[], lo: number, hi: number) {
+    if (hi <= lo) {
       return
     }
-    const j = QuickSort.partition(array, lo, hi)
-    QuickSort.sort(array, lo, j - 1)
-    QuickSort.sort(array, j + 1, hi)
+    let lt = lo
+    let i = lo + 1
+    let gt = hi
+    const v = array[lo]
+    while (i <= gt) {
+      const cmp = array[i] - v
+      if (cmp < 0) QuickSort.exchange(array, lt++, i++)
+      else if (cmp > 0) QuickSort.exchange(array, i, gt--)
+      else i++
+    }
+    QuickSort.sort(array, lo, lt - 1)
+    QuickSort.sort(array, gt + 1, hi)
   }
 
-  static partition<T>(array: T[], lo: number, hi: number): number {
+  static partition(array: number[], lo: number, hi: number): number {
     let i = lo
     let j = hi + 1
     const v = array[lo]
@@ -28,11 +32,11 @@ export class QuickSort {
     return j
   }
 
-  static less<T>(a: T, b: T) {
+  static less<T>(a: number, b: number) {
     return a < b
   }
 
-  static exchange<T>(array: T[], i: number, j: number) {
+  static exchange(array: number[], i: number, j: number) {
     const temp = array[i]
     array[i] = array[j]
     array[j] = temp
