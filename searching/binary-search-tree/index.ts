@@ -260,13 +260,3 @@ export class BinarySearchTree<Key, Value> implements Iterable<Value> {
 const bst = new BinarySearchTree<number, number>(
   (a: number, b: number) => a - b
 )
-
-bst.put(7, 7)
-bst.put(10, 10)
-bst.put(12, 12)
-bst.put(4, 4)
-bst.put(6, 6)
-
-console.log(bst.ceil(10))
-console.log(bst.ceil(11))
-console.log(bst.floor(5))
