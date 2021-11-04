@@ -143,6 +143,20 @@ export class LinkedList<TData> {
     }
   }
 
+  public find(compare: (TData) => boolean): TData | null {
+    let p = this.head
+
+    while (p !== null) {
+      if (compare(p.data)) {
+        return p.data
+      }
+
+      p = p.next
+    }
+
+    return null
+  }
+
   reverse(): this {
     let node = this.head
     this.head = this.tail
