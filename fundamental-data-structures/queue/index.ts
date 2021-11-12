@@ -89,7 +89,7 @@ export class Queue<T = any> implements Iterable<T> {
   }
 }
 
-const queue = new Queue<number>()
+/* const queue = new Queue<number>()
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -107,4 +107,4 @@ rl.on('line', (input) => {
 
 rl.on('SIGINT', () => {
   rl.close()
-})
+}) */
