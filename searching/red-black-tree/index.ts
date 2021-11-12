@@ -308,7 +308,7 @@ export class RedBlackTree<Key, Value> implements Iterable<Value> {
   }
 }
 
-const rbt = new RedBlackTree<string, string>((a: string, b: string) =>
+/* const rbt = new RedBlackTree<string, string>((a: string, b: string) =>
   a.localeCompare(b)
 )
 
@@ -335,4 +335,4 @@ rl.on('line', (line) => {
 
 rl.on('SIGINT', () => {
   rl.close()
-})
+}) */

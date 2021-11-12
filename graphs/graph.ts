@@ -14,21 +14,23 @@ export class Graph {
     }
   }
 
-  public V() {
+  V(): number {
     return this.vertices
   }
 
-  public E() {
+  E(): number {
     return this.edges
   }
 
-  public addEdge(v: number, w: number) {
+  addEdge(v: number, w: number): this {
     this.adj[v].add(w)
     this.adj[w].add(v)
     this.edges++
+
+    return this
   }
 
-  public adjacent(v: number) {
+  adjacent(v: number): Iterable<number> {
     return this.adj[v]
   }
 }

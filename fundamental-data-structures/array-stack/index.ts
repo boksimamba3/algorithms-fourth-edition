@@ -21,7 +21,7 @@ export class ArrayStack<T = any> implements Iterable<T> {
   arr: T[]
   n: number
 
-  constructor(capacity: number) {
+  constructor(capacity: number = 10) {
     this.arr = Array.from({ length: capacity })
     this.n = 0
   }
@@ -63,7 +63,7 @@ export class ArrayStack<T = any> implements Iterable<T> {
   }
 }
 
-const stack = new ArrayStack<number>(5)
+/* const stack = new ArrayStack<number>(5)
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -81,4 +81,4 @@ rl.on('line', (input) => {
 
 rl.on('SIGINT', () => {
   rl.close()
-})
+}) */

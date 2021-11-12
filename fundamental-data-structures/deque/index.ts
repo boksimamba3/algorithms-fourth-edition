@@ -158,7 +158,7 @@ export class Deque<TData> implements Iterable<TData> {
   }
 }
 
-const deque = new Deque(5)
+/* const deque = new Deque(5)
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -183,4 +183,4 @@ rl.on('line', (input) => {
 
 rl.on('SIGINT', () => {
   rl.close()
-})
+}) */

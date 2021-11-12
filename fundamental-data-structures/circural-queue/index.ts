@@ -120,7 +120,7 @@ export class CircularQueue<TData> implements Iterable<TData> {
   }
 }
 
-const circularQueue = new CircularQueue(5)
+/* const circularQueue = new CircularQueue(5)
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -143,4 +143,4 @@ rl.on('line', (input) => {
 
 rl.on('SIGINT', () => {
   rl.close()
-})
+}) */
