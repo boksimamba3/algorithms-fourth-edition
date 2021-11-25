@@ -1,4 +1,4 @@
-import { Bag } from '../fundamental-data-structures/bag'
+import { Bag } from '../../fundamental-data-structures/bag'
 
 export class Graph {
   private vertices: number // vertices

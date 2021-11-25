@@ -1,4 +1,4 @@
-import { ArrayStack } from '../fundamental-data-structures/array-stack'
+import { ArrayStack } from '../../fundamental-data-structures/array-stack'
 import { Graph } from './graph'
 
 export class DepthFirstPath {

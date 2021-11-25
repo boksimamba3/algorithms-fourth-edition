@@ -1,6 +1,6 @@
 import { Graph } from './graph'
-import { ArrayStack } from '../fundamental-data-structures/array-stack'
-import { Queue } from '../fundamental-data-structures/queue'
+import { ArrayStack } from '../../fundamental-data-structures/array-stack'
+import { Queue } from '../../fundamental-data-structures/queue'
 
 export class BreadthFirstPath {
   private marked: boolean[]
