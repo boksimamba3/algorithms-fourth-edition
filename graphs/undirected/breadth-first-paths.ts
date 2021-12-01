@@ -9,7 +9,9 @@ export class BreadthFirstPath {
 
   constructor(graph: Graph, source: number) {
     this.source = source
-    this.marked = Array.from({ length: graph.V() })
+    this.marked = Array.from<boolean>({ length: graph.V() }).fill(
+      false
+    )
     this.edgeTo = Array.from({ length: graph.V() })
     this.bfs(graph, source)
   }
@@ -59,6 +61,6 @@ graph
   .addEdge(3, 5)
   .addEdge(0, 2)
 
-const dfp = new BreadthFirstPath(graph, 0)
+const bfp = new BreadthFirstPath(graph, 0)
 
-console.log(Array.from(dfp.pathTo(4)))
+console.log(Array.from(bfp.pathTo(4)))

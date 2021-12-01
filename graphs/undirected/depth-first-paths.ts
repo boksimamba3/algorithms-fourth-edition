@@ -8,7 +8,9 @@ export class DepthFirstPath {
 
   constructor(graph: Graph, source: number) {
     this.source = source
-    this.marked = Array.from({ length: graph.V() })
+    this.marked = Array.from<boolean>({ length: graph.V() }).fill(
+      false
+    )
     this.edgeTo = Array.from({ length: graph.V() })
     this.dfs(graph, source)
   }

@@ -6,7 +6,9 @@ export class ConnectedComponents {
   private count: number
 
   constructor(graph: Graph) {
-    this.marked = Array.from({ length: graph.V() })
+    this.marked = Array.from<boolean>({ length: graph.V() }).fill(
+      false
+    )
     this.id = Array.from({ length: graph.V() })
     this.count = 0
     for (let s = 0; s < graph.V(); s++) {
