@@ -128,6 +128,8 @@ export class IndexMinPQ<Key> {
     const swap = this.pq[i]
     this.pq[i] = this.pq[j]
     this.pq[j] = swap
+    this.qp[this.pq[i]] = i
+    this.qp[this.pq[j]] = j
   }
 
   private greater(i: number, j: number) {
