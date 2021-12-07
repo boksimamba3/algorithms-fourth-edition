@@ -21,13 +21,13 @@ export class Edge implements Comparable<Edge> {
     return this.v
   }
 
-  other(vertex: number) {
+  other(vertex: number): number {
     if (vertex === this.v) return this.w
     if (vertex === this.w) return this.v
     throw new Error('Invalid argument exception')
   }
 
-  compareTo(that: Edge) {
+  compareTo(that: Edge): number {
     if (this.getWeight() < that.getWeight()) return -1
     if (this.getWeight() > that.getWeight()) return 1
     return 0
