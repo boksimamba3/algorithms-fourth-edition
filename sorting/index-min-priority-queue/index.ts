@@ -131,9 +131,35 @@ export class IndexMinPQ<Key> {
   }
 
   private greater(i: number, j: number) {
-    return this.comparator(
-      this.keys[this.pq[i]],
-      this.keys[this.pq[j]]
+    return (
+      this.comparator(this.keys[this.pq[i]], this.keys[this.pq[j]]) >
+      0
     )
   }
+}
+
+const words = [
+  'it',
+  'was',
+  'the',
+  'best',
+  'of',
+  'times',
+  'it',
+  'was',
+  'the',
+  'best',
+]
+
+const pq = new IndexMinPQ<string>(
+  words.length,
+  (a: string, b: string) => a.localeCompare(b)
+)
+for (let i = 0; i < words.length; i++) {
+  pq.insert(i, words[i])
+}
+
+while (!pq.isEmpty()) {
+  const i = pq.delMin()
+  console.log(i + ' ' + words[i])
 }
