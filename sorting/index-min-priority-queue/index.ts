@@ -138,18 +138,7 @@ export class IndexMinPQ<Key> {
   }
 }
 
-const words = [
-  'it',
-  'was',
-  'the',
-  'best',
-  'of',
-  'times',
-  'it',
-  'was',
-  'the',
-  'best',
-]
+const words = ['John', 'Jane', 'Paul', 'Mark', 'Steve', 'Ann', 'Rob']
 
 const pq = new IndexMinPQ<string>(
   words.length,
