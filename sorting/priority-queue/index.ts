@@ -70,9 +70,9 @@ export class PQMin<T> {
   }
 
   private swim(k: number) {
-    while (k > 1 && this.greater(k / 2, k)) {
-      this.exchange(k, k / 2)
-      k = k / 2
+    while (k > 1 && this.greater(Math.floor(k / 2), k)) {
+      this.exchange(k, Math.floor(k / 2))
+      k = Math.floor(k / 2)
     }
   }
 
