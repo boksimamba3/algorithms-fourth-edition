@@ -59,12 +59,14 @@ export class EdgeWeightedGraph {
     return this.edges
   }
 
-  addEdge(e: Edge) {
+  addEdge(e: Edge): this {
     const v = e.either()
     const w = e.other(v)
     this.adj[v].add(e)
     this.adj[w].add(e)
     this.edges++
+
+    return this
   }
 
   degree(v: number): number {

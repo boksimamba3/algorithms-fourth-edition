@@ -172,5 +172,5 @@ for (let i = 0; i < words.length; i++) {
 
 while (!pq.isEmpty()) {
   const i = pq.delMin()
-  console.log(i + ' ' + words[i])
+  // console.log(i + ' ' + words[i])
 }

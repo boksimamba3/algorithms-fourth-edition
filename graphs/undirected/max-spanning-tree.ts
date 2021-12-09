@@ -73,3 +73,29 @@ export class PrimMST {
     }
   }
 }
+
+const ewg = new EdgeWeightedGraph(8)
+
+ewg
+  .addEdge(new Edge(4, 5, 0.35))
+  .addEdge(new Edge(4, 7, 0.37))
+  .addEdge(new Edge(5, 7, 0.28))
+  .addEdge(new Edge(0, 7, 0.16))
+  .addEdge(new Edge(1, 5, 0.32))
+  .addEdge(new Edge(0, 4, 0.38))
+  .addEdge(new Edge(2, 3, 0.17))
+  .addEdge(new Edge(1, 7, 0.19))
+  .addEdge(new Edge(0, 2, 0.26))
+  .addEdge(new Edge(1, 2, 0.36))
+  .addEdge(new Edge(1, 3, 0.29))
+  .addEdge(new Edge(2, 7, 0.34))
+  .addEdge(new Edge(6, 2, 0.4))
+  .addEdge(new Edge(3, 6, 0.52))
+  .addEdge(new Edge(6, 0, 0.58))
+  .addEdge(new Edge(6, 4, 0.93))
+
+const mst = new PrimMST(ewg)
+
+for (let e of mst.edges()) {
+  console.log(e)
+}
