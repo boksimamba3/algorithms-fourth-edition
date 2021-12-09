@@ -97,6 +97,26 @@ export class IndexMinPQ<Key> {
     this.sink(this.qp[i])
   }
 
+  decreaseKey(i: number, key: Key) {
+    if (!this.contains(i)) {
+      throw new NoSuchElementError(
+        'index is not in the priority queue'
+      )
+    }
+    if (this.comparator(this.keys[i], key) == 0) {
+      throw new IllegalArgumentError(
+        'Calling decreaseKey() with a key equal to the key in the priority queue'
+      )
+    }
+    if (this.comparator(this.keys[i], key) < 0) {
+      throw new IllegalArgumentError(
+        'Calling decreaseKey() with a key strictly greater than the key in the priority queue'
+      )
+    }
+    this.keys[i] = key
+    this.swim(this.qp[i])
+  }
+
   delete(i: number) {
     if (!this.contains(i)) throw new NoSuchElementError()
     const index = this.qp[i]
