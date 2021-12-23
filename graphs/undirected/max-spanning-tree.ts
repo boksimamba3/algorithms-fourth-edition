@@ -14,7 +14,7 @@ export class PrimMST {
     )
     this.edgeTo = Array.from({ length: graph.V() })
     this.distTo = Array.from({ length: graph.V() })
-    this.pq = new IndexMinPQ(
+    this.pq = new IndexMinPQ<number>(
       graph.V(),
       (a: number, b: number) => a - b
     )
