@@ -85,7 +85,7 @@ export class Queue<T = any> implements Iterable<T> {
   }
 
   [Symbol.iterator]() {
-    return new QueueIterator(this)
+    return new QueueIterator<T>(this)
   }
 }
 

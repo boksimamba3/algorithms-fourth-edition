@@ -61,9 +61,18 @@ export class Trie<T> {
     return x
   }
 
+  keysWithPrefix(prefix: string) {
+    const queue = new Queue<string>()
+    const x = this._get(this.root, prefix, 0)
+    this._keys(x, prefix, queue)
+
+    return queue
+  }
+
   keys(): Iterable<string> {
     const queue = new Queue<string>()
     this._keys(this.root, '', queue)
+
     return queue
   }
 
@@ -97,3 +106,5 @@ export class Trie<T> {
     return null
   }
 }
+
+const trie = new Trie()
