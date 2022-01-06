@@ -1,29 +1,31 @@
 export class KMP {
-  private static computeLps(pattern: string) {
-    const lps = Array.from<number>({
+  private pattern: string
+  private lps: number[] // longest prefix that is also a suffix
+
+  constructor(pattern: string) {
+    this.pattern = pattern
+    // Compute table for prefix that is also suffix
+    this.lps = Array.from<number>({
       length: pattern.length,
     }).fill(0)
-    lps[0] = 0
+    this.lps[0] = 0
     let i = 0
 
     for (let j = 1; j < pattern.length; j++) {
       while (i > 0 && pattern.charAt(j) !== pattern.charAt(i)) {
-        i = lps[i - 1]
+        i = this.lps[i - 1]
       }
 
       if (pattern.charAt(i) === pattern.charAt(j)) {
         i++
       }
-      lps[j] = i
+      this.lps[j] = i
     }
-
-    return lps
   }
 
-  static search(pattern: string, text: string) {
+  search(text: string) {
     const n = text.length
     const m = pattern.length
-    const lps = KMP.computeLps(pattern)
     let i = 0
     let j = 0
 
@@ -35,7 +37,7 @@ export class KMP {
       if (j === m) {
         return i - j
       } else if (pattern.charAt(j) != text.charAt(i)) {
-        if (j != 0) j = lps[j - 1]
+        if (j != 0) j = this.lps[j - 1]
         else i++
       }
     }
@@ -46,4 +48,5 @@ export class KMP {
 
 const text = 'ababcabab'
 const pattern = 'ababdabacdababcabab'
-console.log(KMP.search(pattern, text))
+const kmp = new KMP(pattern)
+console.log(kmp.search(text))
