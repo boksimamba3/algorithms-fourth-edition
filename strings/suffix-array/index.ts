@@ -90,7 +90,7 @@ export class SuffixArray {
     let hi = this.suffixes.length - 1
 
     while (lo <= hi) {
-      const mid = lo + (hi - lo) / 2
+      const mid = Math.floor(lo + (hi - lo) / 2)
       const cmp = this.compare(query, this.suffixes[mid])
       if (cmp < 0) hi = mid - 1
       else if (cmp > 0) lo = mid + 1
@@ -112,5 +112,3 @@ export class SuffixArray {
 
 const text = 'ABRACADABRA!'
 const suffixArray = new SuffixArray(text)
-
-suffixArray.suffixes.forEach((s) => console.log(`${s}`))
