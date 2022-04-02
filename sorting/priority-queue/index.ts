@@ -33,7 +33,7 @@ export class PQMin<T> {
   }
 
   public insert(x: T) {
-    if (this.n == this.pq.length - 1) this.resize(2 * this.pq.length)
+    if (this.n === this.pq.length - 1) this.resize(2 * this.pq.length)
 
     this.pq[++this.n] = x
     this.swim(this.n)
@@ -45,7 +45,7 @@ export class PQMin<T> {
     const min = this.pq[1]
     this.exchange(1, this.n--)
     this.sink(1)
-    if (this.n > 0 && this.n == (this.pq.length - 1) / 4)
+    if (this.n > 0 && this.n === (this.pq.length - 1) / 4)
       this.resize(this.pq.length / 2)
 
     return min
